@@ -19,8 +19,8 @@ You need to guess all the letters of the word in **7** or less number of tries
 |      |
 |
 |      O
-|     \\|/
-|     / \\
+|     \|/
+|     / \
 ^^^^^^^^^^^^^^^
 
 ```
