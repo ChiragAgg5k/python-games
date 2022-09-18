@@ -134,6 +134,23 @@ class Word():
 if __name__ == "__main__":
     game_on = True
 
+    print("\n"*100)
+
+    print("""
+██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗
+██║░░██║██╔══██╗████╗░██║██╔════╝░████╗░████║██╔══██╗████╗░██║
+███████║███████║██╔██╗██║██║░░██╗░██╔████╔██║███████║██╔██╗██║
+██╔══██║██╔══██║██║╚████║██║░░╚██╗██║╚██╔╝██║██╔══██║██║╚████║
+██║░░██║██║░░██║██║░╚███║╚██████╔╝██║░╚═╝░██║██║░░██║██║░╚███║
+╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝""")
+
+    print("""\nWelcome to Hangman. A simple game for kids that teaches children that saying the wrong word can lead to someone's DEATH.
+          
+The rules for playing this game are pretty much non existent.
+You will be given a word at random and only shown the number of letters it consists,
+you need to guess all the letters in the word in 7 or less number of tries.
+          """)
+
     hangname = input(
         "\nLet's start by entering a name for our hangman , to add a bit of \"emotional value\" : ").capitalize()
 
