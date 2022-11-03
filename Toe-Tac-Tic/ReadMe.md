@@ -1,10 +1,15 @@
+# TIC-TAC-TOE
+
 This is a simple game of tic-tac-toe that we all are familiar with.
-In this the player plays against the computer which choose its moves at random (making it very easy to win)
+In this the player plays against the computer which choose its moves at random _(making it very easy to win_)
 
-the only module that the program requires is the random module.
+The only module that the program requires is the random module.
 
-we start off by first creating a board which uses numbers 1-9 in order to mark the position like this-
+## How to play
 
+We start off by first creating a board which uses numbers 1-9 in order to mark the position like this-
+
+```
 -----------
    |   |
  1 | 2 | 3
@@ -18,13 +23,15 @@ we start off by first creating a board which uses numbers 1-9 in order to mark t
  7 | 8 | 9
    |   |
 -----------
+```
 
-the player can choose the marker it wants , X or 0. the computer chooses the opposite
-the one who goes first is decided via a coinflip
-number of wins of both the player and computer are kept track of
-the game can be terminated mid way as well
+- The player can choose the marker it wants , X or 0. the computer chooses the opposite.
 
-I hope to see useful suggestions and input by the community about this project.
+- The one who goes first is decided via a coinflip
+  number of wins of both the player and computer are kept track of
 
+- The game can be terminated mid way as well
 
+## Note
 
+I hope you like it :D
