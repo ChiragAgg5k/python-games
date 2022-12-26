@@ -1,7 +1,7 @@
 import random
 
 
-class Figure():
+class Figure:
     def __init__(self, name: str) -> None:
 
         self.base = f"""
@@ -20,10 +20,14 @@ class Figure():
         |      | 
         |      O
         |
+
+
+
+        
         |
         |
         ^^^^^^^^^^^^^^^
-\"OOF! {name}'s head is here , that oughta hurt\"
+\"OOF! {name}'s head is here , that ought to hurt\"
         """
 
         self.hang2 = f"""
@@ -91,31 +95,84 @@ class Figure():
 \"{name} IS ALIVE , HOOOORAAAYYYYYYY!!!!!!!!!!!\"
         """
 
-        self.hanglist = [self.base, self.hang1, self.hang2,
-                         self.hang3, self.hang4, self.hang5]
+        self.hang_list = [
+            self.base,
+            self.hang1,
+            self.hang2,
+            self.hang3,
+            self.hang4,
+            self.hang5,
+        ]
 
     def __iter__(self):
-        self.currenthang = 0
+        self.current_hang = 0
         return self
 
     def __next__(self):
 
-        if self.currenthang < len(self.hanglist):
-            x = self.hanglist[self.currenthang]
-            self.currenthang += 1
+        if self.current_hang < len(self.hang_list):
+            x = self.hang_list[self.current_hang]
+            self.current_hang += 1
             return x
 
         raise StopIteration
 
     def __str__(self) -> str:
-        return self.hanglist[self.currenthang]
+        return self.hang_list[self.current_hang]
 
 
-class Word():
-
+class Word:
     def __init__(self) -> None:
-        self.word_list = ["absence", "abuse", "account", "accident", "beneath", "bend", "benefit", "biology", "bitter", "candidate", "campaign", "camera", "capacity", "capture", "deaf", "daughter", "deal", "decorate", "dialogue", "economy", "finance", "educate", "efficient",
-                          "supportive", "elderly", "flight", "folk", "flame", "frustration", "garbage", "gather", "gentle", "global", "hilarious", "intelligence", "jazz", "knife", "longevity", "momument", "nonsense", "nobody", "turmeric", "utilize", "sashimi", "reconfigure", "wheat", "yellowish", "zone"]
+        self.word_list = [
+            "absence",
+            "abuse",
+            "account",
+            "accident",
+            "beneath",
+            "bend",
+            "benefit",
+            "biology",
+            "bitter",
+            "candidate",
+            "campaign",
+            "camera",
+            "capacity",
+            "capture",
+            "deaf",
+            "daughter",
+            "deal",
+            "decorate",
+            "dialogue",
+            "economy",
+            "finance",
+            "educate",
+            "efficient",
+            "supportive",
+            "elderly",
+            "flight",
+            "folk",
+            "flame",
+            "frustration",
+            "garbage",
+            "gather",
+            "gentle",
+            "global",
+            "hilarious",
+            "intelligence",
+            "jazz",
+            "knife",
+            "longevity",
+            "monument",
+            "nonsense",
+            "nobody",
+            "turmeric",
+            "utilize",
+            "sashimi",
+            "reconfigure",
+            "wheat",
+            "yellowish",
+            "zone",
+        ]
 
     def random_word(self):
         return random.choice(self.word_list)
@@ -127,57 +184,70 @@ class Word():
     def show_words(self):
         print("\n---------------")
         for i, j in enumerate(self.word_list):
-            print("{:>3}  |  {:<3}".format(i+1, j))
+            print("{:>3}  |  {:<3}".format(i + 1, j))
         print("---------------\n")
 
 
 if __name__ == "__main__":
     game_on = True
 
-    print("\n"*100)
+    print("\n" * 100)
 
-    print("""
+    print(
+        """
 ██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗
 ██║░░██║██╔══██╗████╗░██║██╔════╝░████╗░████║██╔══██╗████╗░██║
 ███████║███████║██╔██╗██║██║░░██╗░██╔████╔██║███████║██╔██╗██║
 ██╔══██║██╔══██║██║╚████║██║░░╚██╗██║╚██╔╝██║██╔══██║██║╚████║
 ██║░░██║██║░░██║██║░╚███║╚██████╔╝██║░╚═╝░██║██║░░██║██║░╚███║
-╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝""")
+╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝"""
+    )
 
-    print("""\nWelcome to Hangman. A simple game for kids that teaches children that saying the wrong word can lead to someone's DEATH.
+    print(
+        """\nWelcome to Hangman. A simple game for kids that teaches children that saying the wrong word can lead to someone's DEATH.
           
 The rules for playing this game are pretty much non existent.
 You will be given a word at random and only shown the number of letters it consists,
 you need to guess all the letters in the word in 7 or less number of tries.
-          """)
+          """
+    )
 
-    hangname = input(
-        "\nLet's start by entering a name for our hangman , to add a bit of \"emotional value\" : ").capitalize()
+    hang_name = input(
+        '\nLet\'s start by entering a name for our hangman , to add a bit of "emotional value" : '
+    ).capitalize()
 
     while game_on:
-        hangman = Figure(hangname)
-        hangiter = iter(hangman)
+        hangman = Figure(hang_name)
+        hang_iter = iter(hangman)
 
-        wordz = Word()
-        chosen = wordz.random_word()
+        word = Word()
+        chosen = word.random_word()
 
-        blank = ["_"]*len(chosen)
-        correct_messages = iter(["First correct guess!\n", "Second correct guess! ,keep going man\n", "Third correct guess! , you are killing it man\n",
-                                 "Fourth correct guess! go go go\n", "Fift correct guess! , you are on fire\n", "Sixth correct guess! damn\n", "Seventh correct guess! when will this end?\n", "Eight correct guess! bruh how long is this word\n"])
+        blank = ["_"] * len(chosen)
+        correct_messages = iter(
+            [
+                "First correct guess!\n",
+                "Second correct guess! ,keep going man\n",
+                "Third correct guess! , you are killing it man\n",
+                "Fourth correct guess! go go go\n",
+                "Fifth correct guess! , you are on fire\n",
+                "Sixth correct guess! damn\n",
+                "Seventh correct guess! when will this end?\n",
+                "Eight correct guess! bruh how long is this word\n",
+            ]
+        )
 
         print(hangman.__next__())
 
         while "".join(blank) != chosen:
 
-            print(
-                f"Number of letters left to guessed = { blank.count('_') }")
+            print(f"Number of letters left to guessed = { blank.count('_') }")
             print("".join(blank))
 
             player_guess = input("\nPlayer enter your guess : ")
 
             if player_guess in chosen and player_guess != "":
-                index_pos = [i for i, j in enumerate(
-                    chosen) if player_guess == j]
+                index_pos = [i for i, j in enumerate(chosen) if player_guess == j]
                 for i in index_pos:
                     blank[i] = list(chosen)[i]
 
@@ -185,7 +255,7 @@ you need to guess all the letters in the word in 7 or less number of tries.
 
             else:
                 try:
-                    print(hangiter.__next__())
+                    print(hang_iter.__next__())
 
                 except StopIteration:
                     print(hangman.hang6)
@@ -198,9 +268,10 @@ you need to guess all the letters in the word in 7 or less number of tries.
             print(hangman.win)
 
             print(
-                f"You got the correct answer {chosen} in {hangiter.currenthang-1} wrong guesse(s).")
+                f"You got the correct answer {chosen} in {hang_iter.current_hang-1} wrong guess(s)."
+            )
 
         cont = input("\nDo you want to play one more round? (y/n) : ")
         if cont != "y":
             break
-        print("\n"*100)
+        print("\n" * 100)
