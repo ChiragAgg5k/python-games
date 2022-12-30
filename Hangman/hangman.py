@@ -20,10 +20,6 @@ class Figure:
         |      | 
         |      O
         |
-
-
-
-        
         |
         |
         ^^^^^^^^^^^^^^^
@@ -190,6 +186,17 @@ class Word:
 
 if __name__ == "__main__":
     game_on = True
+    all_messages = [
+                "First correct guess!\n",
+                "Second correct guess! ,keep going man\n",
+                "Third correct guess! , you are killing it man\n",
+                "Fourth correct guess! go go go\n",
+                "Fifth correct guess! , you are on fire\n",
+                "Sixth correct guess! damn\n",
+                "Seventh correct guess! when will this end?\n",
+                "Eight correct guess! bruh how long is this word\n",
+            ]
+        
 
     print("\n" * 100)
 
@@ -224,18 +231,8 @@ you need to guess all the letters in the word in 7 or less number of tries.
         chosen = word.random_word()
 
         blank = ["_"] * len(chosen)
-        correct_messages = iter(
-            [
-                "First correct guess!\n",
-                "Second correct guess! ,keep going man\n",
-                "Third correct guess! , you are killing it man\n",
-                "Fourth correct guess! go go go\n",
-                "Fifth correct guess! , you are on fire\n",
-                "Sixth correct guess! damn\n",
-                "Seventh correct guess! when will this end?\n",
-                "Eight correct guess! bruh how long is this word\n",
-            ]
-        )
+        
+        correct_messages = iter(all_messages)
 
         print(hangman.__next__())
 
@@ -245,8 +242,14 @@ you need to guess all the letters in the word in 7 or less number of tries.
             print("".join(blank))
 
             player_guess = input("\nPlayer enter your guess : ")
+            
+            if player_guess == "":
+                print("You didn't enter anything , try again\n")
+            
+            elif player_guess in blank:
+                print("You already guessed that letter , try again\n")
 
-            if player_guess in chosen and player_guess != "":
+            elif (player_guess) in chosen:
                 index_pos = [i for i, j in enumerate(chosen) if player_guess == j]
                 for i in index_pos:
                     blank[i] = list(chosen)[i]
@@ -274,4 +277,5 @@ you need to guess all the letters in the word in 7 or less number of tries.
         cont = input("\nDo you want to play one more round? (y/n) : ")
         if cont != "y":
             break
+        
         print("\n" * 100)
